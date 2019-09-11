@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Quick Chat</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+	<script src="https://kit.fontawesome.com/a1813e4a30.js"></script>
+	<link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+	<div id="appContainer" class="flex-column">
+
+		<header>
+			<div class="container flex-column flex-center">
+				<h1>Chat App</h1>
+				<p class="light-text">Chat application made of socket.io by Chervin</p>
+			</div>
+		</header>
+
+		<div id="mainContent" class="container flex-grow-1 flex-column ">
+
+			<section id="login">
+				<!-- <h2 class="text-center">Get Started</h2>
+				<form id="loginForm" class="flex">
+					<input type="text" name="username " id="usernameInput" placeholder="username" class="flex-grow-1">
+					&nbsp&nbsp<button id="loginBtn" class="btn btn-primary">Chat!</button>
+				</form> -->
+
+				<div class="card">
+					<div class="box">
+						<div class="img">
+							<img src="https://www.freeiconspng.com/uploads/facebook-chat-logo-png-19.png">
+						</div>
+						<h4>ChatApp<br></h4>
+						<center>
+							<form id="loginForm" class="flex">
+								<div class="input-group mb-3">
+									<label for="usr">Enter username:</label>
+									<input type="text" class="form-control" id="usernameInput" placeholder="Username">
+									<div class="input-group-append">
+										<br><br><button class="btn btn-outline-secondary" id="loginBtn" type="button">Chat now</button>
+									</div>
+								</div>
+							</form>
+						</center>
+
+					</div>
+				</div>
+
+			</section>
+
+			<section id="chat" class="flex-grow-1 flex-column hidden">
+				<div id="messagesList" class="flex-grow-1">
+
+				</div>
+				<form id="messageForm" class="flex">
+					<input type="text" name="message " id="messageInput" class="flex-grow-1">
+					<button id="sendBtn"><img src="https://cdn.pixabay.com/photo/2018/02/04/01/54/paper-planes-3128885_960_720.png" style="height: 50px;"></button>
+				</form>
+			</section>
+
+
+
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+	<script src="app.js "></script>
+</body>
+
+</html>

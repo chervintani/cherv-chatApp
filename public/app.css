@@ -1,0 +1,287 @@
+/* Variabls */
+:root {
+	--primary-blue: #2196f3;
+	--dark-blue: #1976d2;
+	--light-blue: #bbdefb;
+	--white: #ffffff;
+	--primary-text: #212121;
+	--secondary-text: #757575;
+	--light-gray: #bdbdbd;
+}
+
+/* Resets */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family:  'Comfortaa';
+	color: var(--primary-text);
+}
+
+/* Helper Classes */
+
+.flex {
+	display: flex;
+}
+
+.flex-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+	
+}
+
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.primary-text {
+	color: var(--primary-text);
+}
+
+.secondary-text {
+	color: var(--secondary-text);
+}
+
+.light-text {
+	color: var(--light-blue);
+}
+
+.hidden {
+	display: none;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mb-2 {
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-size: 48px;
+	font-weight: 300;
+}
+
+h4 {
+	font-size: 35px;
+	font-weight: bold;
+}
+
+#appContainer {
+	height: 100vh;
+	width: 100vw;
+	align-items: stretch;
+	background-color: var(--primary-blue);
+	overflow: hidden;
+}
+
+#mainContent {
+	width: 100%;
+	justify-content: center;
+}
+
+/* Header */
+header {
+	height: 150px;
+	background-color: var(--dark-blue);
+	width: 100%;
+	color: white;
+}
+
+header .container {
+	height: 100%;
+	align-items: left;
+}
+
+/* Login */
+
+#loginForm {
+	margin-top: 25px;
+}
+
+/* Form Elements */
+
+input {
+	height: 40px;
+	padding: 10px;
+	background-color: var(--light-blue);
+	border: none;
+	color: var(--secondary-text);
+}
+
+button {
+	height: 40px;
+	padding: 0 15px;
+	background-color: var(--primary-blue);
+	color: white;
+	border: none;
+
+}
+
+/* FOR THE CARDS */
+
+.card {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    min-height:370px;
+    background:#fff;
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+    border-radius:10px;
+    transition:0.5s;
+}
+.card:hover {
+    box-shadow:0 30px 70px rgba(0,0,0,.2);
+}
+.card .box {
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    width:100%;
+}
+.card .box .img {
+    width:120px;
+    height:120px;
+    margin:0 auto;
+    border-radius:50%;
+    overflow:hidden;
+}
+.card .box .img img {
+    width:100%;
+    height:100%;
+}
+.card .box h2 {
+    font-size:20px;
+    color:#262626;
+    margin:20px auto;
+}
+.card .box h2 span {
+    font-size:14px;
+    background:#e91e63;
+    color:#fff;
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:15px;
+}
+.card .box p {
+    color:#262626;
+}
+.card .box span {
+    display:inline-flex;
+}
+.card .box ul {
+    margin:0;
+    padding:0;
+}
+.card .box ul li {
+    list-style:none;
+    float:left;
+}
+.card .box ul li a {
+    display:block;
+    color:#aaa;
+    margin:0 10px;
+    font-size:20px;
+    transition:0.5s;
+    text-align:center;
+}
+.card .box ul li:hover a {
+    color:#e91e63;
+    transform:rotateY(360deg);
+}
+
+/* Chat */
+
+#chat {
+	background: white;
+	height: 100px;
+	margin: 25px 0;
+	padding: 25px 25px;
+	color: white;
+	overflow-y: scroll;
+	border-radius: 20px;
+}
+
+#messageForm {
+	margin-bottom: 25px;
+}
+
+#messageInput {
+	border-radius: 20px;
+	padding: 25px;
+}
+
+.message {
+	background-color: var(--primary-blue);
+	padding: 20px;
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+.message-right {
+	background: var(--light-blue);
+	color: var(--primary-text);
+	margin-left: 20%;
+}
+
+.message-right .message-date {
+	color: var(--primary-text);
+}
+
+.message-details {
+	margin-bottom: 5px;
+}
+
+.message-author {
+	font-weight: 800;
+}
+
+.message-date {
+	font-weight: 100;
+	font-size: 14px;
+}
+
+.message-content {
+	font-weight: 100;
+}
+
+#sendBtn {
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    outline:none;
+}
+#sendBtn:hover {
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    outline:none;
+}
+
+i {
+	padding-top: 8px;
+	font-size: 28px;
+	padding-bottom: 15px;
+}
