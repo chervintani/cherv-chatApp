@@ -1,7 +1,7 @@
 /* Variabls */
 :root {
 	--primary-blue: #2196f3;
-	--dark-blue: #1976d2;
+	--dark-blue: #fc07ef;
 	--light-blue: #bbdefb;
 	--white: #ffffff;
 	--primary-text: #212121;
@@ -16,9 +16,12 @@
 	box-sizing: border-box;
 }
 
+
 body {
+	/* background-image: url("https://ak2.picdn.net/shutterstock/videos/1021881022/thumb/1.jpg"); */
 	font-family:  'Comfortaa';
 	color: var(--primary-text);
+		height: 100%;
 }
 
 /* Helper Classes */
@@ -85,8 +88,14 @@ h4 {
 	height: 100vh;
 	width: 100vw;
 	align-items: stretch;
-	background-color: var(--primary-blue);
-	overflow: hidden;
+	/* background-color: var(--primary-blue); */
+	background-image: url("https://ak2.picdn.net/shutterstock/videos/1021881022/thumb/1.jpg");
+	
+	overflow: hidden;  
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #mainContent {
@@ -97,9 +106,10 @@ h4 {
 /* Header */
 header {
 	height: 150px;
-	background-color: var(--dark-blue);
+	/* background-color: var(--dark-blue); */
 	width: 100%;
 	color: white;
+	background: rgba(255, 7, 234, 0.05);
 }
 
 header .container {
@@ -134,6 +144,7 @@ button {
 
 /* FOR THE CARDS */
 
+
 .card {
     position:absolute;
     top:50%;
@@ -144,10 +155,10 @@ button {
     background:#fff;
     box-shadow:0 20px 50px rgba(0,0,0,.1);
     border-radius:10px;
-    transition:0.5s;
+	transition:0.5s;
 }
 .card:hover {
-    box-shadow:0 30px 70px rgba(0,0,0,.2);
+	box-shadow:0 50px 70px rgba(0,0,0,.2);
 }
 .card .box {
     position:absolute;
@@ -222,6 +233,39 @@ button {
 	border-radius: 20px;
 }
 
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	/* width: 100%; */
+	color: white;
+	text-align: center;
+	margin-left: 30%;
+
+  }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(17, 87, 240, 1); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(17, 87, 240, 0.5); ; 
+}
+
 #messageForm {
 	margin-bottom: 25px;
 }
@@ -285,3 +329,104 @@ i {
 	font-size: 28px;
 	padding-bottom: 15px;
 }
+
+
+/* FOR THE CHAT BUBBLES */
+
+.chat {
+	width: 300px;
+	border: solid 1px #EEE;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+  }
+  
+  .messages {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+
+  }
+  
+  .message {
+	border-radius: 20px;
+	padding: 8px 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+  }
+  
+  .yours {
+	align-items: flex-start;
+  }
+  
+  .yours .message {
+	margin-right: 0%;
+	background-color: #eee;
+	position: relative;
+	float: right;
+
+  }
+  
+  .yours .message.last:before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	bottom: 0;
+	left: -7px;
+	height: 20px;
+	width: 20px;
+	background: #eee;
+	border-bottom-right-radius: 15px;
+  }
+  .yours .message.last:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	left: -10px;
+	width: 10px;
+	height: 20px;
+	background: white;
+	border-bottom-right-radius: 10px;
+	padding: 50px;
+  }
+  
+  .mine {
+	align-items: flex-end;
+  }
+  
+  .mine .message {
+	color: white;
+	margin-left: 25%;
+	background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+	background-attachment: fixed;
+	position: relative;
+	float: right;
+  }
+  
+  .mine .message.last:before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	bottom: 0;
+	right: -8px;
+	height: 20px;
+	width: 20px;
+	background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+	background-attachment: fixed;
+	border-bottom-left-radius: 15px;
+  }
+  
+  .mine .message.last:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	right: -10px;
+	width: 10px;
+	height: 20px;
+	background: white;
+	border-bottom-left-radius: 10px;
+  }
+  
