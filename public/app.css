@@ -268,6 +268,7 @@ button {
 
 #messageForm {
 	margin-bottom: 25px;
+	
 }
 
 #messageInput {
@@ -429,4 +430,47 @@ i {
 	background: white;
 	border-bottom-left-radius: 10px;
   }
-  
+  /* NEW ONE  */
+  .me {
+	position: relative;
+	background: #2270e6;
+	border-radius: .4em;
+}
+
+.me:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color:#2270e6;
+	border-right: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+	margin-left: 50%;
+}
+
+.you {
+	position: relative;
+	background: #06b96f;
+	border-radius: .4em;
+}
+
+.you:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: #06b96f;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+	
+}

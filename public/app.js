@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	
+
 	const messageTypes = { LEFT: 'left', RIGHT: 'right', LOGIN: 'login' };
 	const me = messageTypes.RIGHT.avatar = "https://lh6.googleusercontent.com/-lr2nyjhhjXw/AAAAAAAAAAI/AAAAAAAARmE/MdtfUmC0M4s/photo.jpg?sz=48";
 	const you = messageTypes.LEFT.avatar = "https://a11.t26.net/taringa/avatares/9/1/2/F/7/8/Demon_King1/48x48_5C5.jpg";
@@ -8,7 +8,7 @@ $(document).ready(function () {
 	const messagesList = $('#messagesList');
 	const messageInput = $('#messageInput');
 	const sendBtn = $('#sendBtn');
-
+	const messageForm = $('#messageForm');
 	//login stuff
 	let username = '';
 	const usernameInput = $('#usernameInput');
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 	//Connect to socket.io - automatically tries to connect on same port app was served from
 	var socket = io();
-
+	messageForm.addClass('hidden');
 	socket.on('message', function (message) {
 		//Update type of message based on username
 		if (message.type !== messageTypes.LOGIN) {
@@ -50,17 +50,15 @@ $(document).ready(function () {
 		//I STOPPED RIGHT HERE
 		return `
 	<div class="messages ${
-			message.type === messageTypes.LEFT ? 'yours messages' : 'mine messages'
+			message.type === messageTypes.LEFT ? 'you' : 'me'
 			}">
-		
-		<div class="mine messages" style="flex-direction: column;
+		<div style="flex-direction: column;
 		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;">
-    	<div class="message last">
-     		${message.content} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			 <p>${message.date}</p>
-			 </div>
+		white-space: initial;
+		word-wrap: break-word;
+		overflow: hidden; padding: 20px;">
+     		${message.content} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br>
+			 <p style="float: right">${message.date}</p>
   		</div>
 	</div>
 	`;
@@ -116,6 +114,8 @@ $(document).ready(function () {
 
 		loginWindow.addClass('hidden');
 		chatWindow.removeClass('hidden');
+		messageForm.removeClass('hidden');
+		
 	})
 
 	sendMessage = function (message) {
