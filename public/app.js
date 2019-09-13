@@ -1,8 +1,7 @@
 $(document).ready(function () {
 
 	const messageTypes = { LEFT: 'left', RIGHT: 'right', LOGIN: 'login' };
-	const me = messageTypes.RIGHT.avatar = "https://lh6.googleusercontent.com/-lr2nyjhhjXw/AAAAAAAAAAI/AAAAAAAARmE/MdtfUmC0M4s/photo.jpg?sz=48";
-	const you = messageTypes.LEFT.avatar = "https://a11.t26.net/taringa/avatares/9/1/2/F/7/8/Demon_King1/48x48_5C5.jpg";
+
 	//Chat stuff
 	const chatWindow = $('#chat');
 	const messagesList = $('#messagesList');
@@ -57,6 +56,9 @@ $(document).ready(function () {
 		white-space: initial;
 		word-wrap: break-word;
 		overflow: hidden; padding: 20px;">
+		<p style="font-weight: bold">${
+			message.type === messageTypes.LEFT ? message.author : ''
+		}</p>
      		${message.content} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br>
 			 <p style="float: right">${message.date}</p>
   		</div>
@@ -74,7 +76,8 @@ $(document).ready(function () {
 	sendBtn.on("click", function (e) {
 		e.preventDefault();
 		if (!$('#messageInput').val()) {
-			return console.log('Invalid input');
+			console.log('Invalid input');
+			
 		}
 
 		function formatAMPM(date) {
@@ -105,7 +108,11 @@ $(document).ready(function () {
 		e.preventDefault();
 
 		if (!usernameInput.val()) {
-			return console.log('Must supply a username');
+			console.log('Must supply a username');
+			return Swal.fire({
+				type: 'error',
+				title: 'Please input username!',
+			  })
 		}
 
 		//set the username and create logged in message
@@ -121,4 +128,6 @@ $(document).ready(function () {
 	sendMessage = function (message) {
 		socket.emit('message', message);
 	};
+
+	
 })
