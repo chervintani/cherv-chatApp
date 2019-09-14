@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
-
+var userCount = 0;
 //Serve public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -14,9 +14,19 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
 	console.log('a user connected');
 
-	socket.on('disconnect', () => {
-		console.log('user disconnected');
+	userCount++;
+	io.sockets.emit('userCount', { userCount: userCount });
+	socket.on('disconnect', function () {
+		userCount--;
+		io.sockets.emit('userCount', { userCount: userCount });
 	});
+	// socket.on('disconnect', () => {
+	// 	console.log('user disconnected');
+	// });
+
+	socket.on('typing',function(data){
+		socket.broadcast.emit('typing',{username : socket.username});
+	})
 
 	socket.on('message', message => {
 		console.log('message: ' + message);
@@ -24,6 +34,10 @@ io.on('connection', socket => {
 		io.emit('message', message);
 	});
 });
+
+
+
+
 
 http.listen(3000, () => {
 	console.log('listening on port 3000');

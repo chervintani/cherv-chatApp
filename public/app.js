@@ -58,7 +58,7 @@ $(document).ready(function () {
 		overflow: hidden; padding: 20px;">
 		<p style="font-weight: bold">${
 			message.type === messageTypes.LEFT ? message.author : ''
-		}</p>
+			}</p>
      		${message.content} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br>
 			 <p style="float: right">${message.date}</p>
   		</div>
@@ -77,7 +77,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		if (!$('#messageInput').val()) {
 			console.log('Invalid input');
-			
+
 		}
 
 		function formatAMPM(date) {
@@ -104,30 +104,56 @@ $(document).ready(function () {
 		messageInput.val("");
 	});
 
+
+
 	loginBtn.on("click", function (e) {
 		e.preventDefault();
+
+		// $('#user').prepend($('#users').html());
 
 		if (!usernameInput.val()) {
 			console.log('Must supply a username');
 			return Swal.fire({
 				type: 'error',
 				title: 'Please input username!',
-			  })
+			})
 		}
+
+
+
 
 		//set the username and create logged in message
 		username = usernameInput.val();
 		sendMessage({ author: username, type: messageTypes.LOGIN });
 
+
+
 		loginWindow.addClass('hidden');
 		chatWindow.removeClass('hidden');
 		messageForm.removeClass('hidden');
-		
+
+
+
 	})
 
 	sendMessage = function (message) {
 		socket.emit('message', message);
 	};
+	var userCount;
+	socket.on('userCount', function (data) {
+		console.log(data.userCount);
+		userCount = data.userCount;
+		$('#user').text(userCount);
 
-	
+	});
+
+
+	$('#messageInput').bind("keypress", function(){
+		// e.preventDefault();
+		socket.emit('typing');
+	})
+
+	socket.on('typing', function(data){
+		$('#h2').html("<p><i>"+"I amaa"+"is typing ... </i></p>");
+	})
 })
