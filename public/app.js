@@ -77,7 +77,6 @@ $(document).ready(function () {
 		e.preventDefault();
 		if (!$('#messageInput').val()) {
 			console.log('Invalid input');
-
 		}
 
 		function formatAMPM(date) {
@@ -119,7 +118,7 @@ $(document).ready(function () {
 			})
 		}
 
-
+		
 
 
 		//set the username and create logged in message
@@ -133,7 +132,7 @@ $(document).ready(function () {
 		messageForm.removeClass('hidden');
 
 
-
+		socket.emit('send-nickname', username);
 	})
 
 	sendMessage = function (message) {

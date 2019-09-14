@@ -5,21 +5,37 @@ const io = require('socket.io')(http);
 const path = require('path');
 var userCount = 0;
 //Serve public directory
+var users = [];
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, +'public/index.html'));
 });
 
-io.on('connection', socket => {
+io.on('connection', function(socket) {
 	console.log('a user connected');
+
+
+	socket.on('send-nickname', function(nickname) {
+		socket.nickname = nickname;
+		users.push(socket.nickname);
+		console.log(users);
+	});
+
+
+	users.push(socket)
+
+	console.log(users[0].username);
 
 	userCount++;
 	io.sockets.emit('userCount', { userCount: userCount });
 	socket.on('disconnect', function () {
 		userCount--;
 		io.sockets.emit('userCount', { userCount: userCount });
+
 	});
+
+
 	// socket.on('disconnect', () => {
 	// 	console.log('user disconnected');
 	// });
