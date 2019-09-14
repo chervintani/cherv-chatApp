@@ -131,7 +131,7 @@ $(document).ready(function () {
 		chatWindow.removeClass('hidden');
 		messageForm.removeClass('hidden');
 
-
+//ADDED NICKNAME
 		socket.emit('send-nickname', username);
 	})
 

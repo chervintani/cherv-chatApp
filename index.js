@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 io.on('connection', function(socket) {
 	console.log('a user connected');
 
-
+//ADDED NICKNAME
 	socket.on('send-nickname', function(nickname) {
 		socket.nickname = nickname;
 		users.push(socket.nickname);
