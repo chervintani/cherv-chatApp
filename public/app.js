@@ -118,9 +118,6 @@ $(document).ready(function () {
 			})
 		}
 
-		
-
-
 		//set the username and create logged in message
 		username = usernameInput.val();
 		sendMessage({ author: username, type: messageTypes.LOGIN });
@@ -131,7 +128,7 @@ $(document).ready(function () {
 		chatWindow.removeClass('hidden');
 		messageForm.removeClass('hidden');
 
-//ADDED NICKNAME
+		//ADDED NICKNAME
 		socket.emit('send-nickname', username);
 	})
 
@@ -143,16 +140,25 @@ $(document).ready(function () {
 		console.log(data.userCount);
 		userCount = data.userCount;
 		$('#user').text(userCount);
-
 	});
 
+	var index = 0;
+	socket.on('usersOnline', function (data) {
+		console.log(data.usersOnline);
+	})
 
-	$('#messageInput').bind("keypress", function(){
+
+	$('#messageInput').bind("keypress", function () {
 		// e.preventDefault();
 		socket.emit('typing');
 	})
 
-	socket.on('typing', function(data){
-		$('#h2').html("<p><i>"+"I amaa"+"is typing ... </i></p>");
-	})
+
+	socket.on('typing', function (message, err) {
+		console.log(err);
+		$('#h2').html(message.username+ " is typing a message...");
+		setTimeout(function () {
+		$("#h2").html('');
+		}, 3000);
+		})
 })
