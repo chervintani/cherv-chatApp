@@ -47,7 +47,6 @@
 									</div>
 								</div>
 							</form>
-							<h2 id="users" style="display: none"></h2>
 						</center>
 
 					</div>
@@ -56,25 +55,32 @@
 			</section>
 
 			<section id="chat" class="flex-grow-1 flex-column hidden">
-					<div class="card" style="width: 25rem; left: 0; margin-left:15%">
-							<div class="card-body" style="padding: 10px">
-									<div style="color: black"><h3 id="online"><span id="user"></span> Users Online</h3></div>
-									<h2 id="h2" style="color: black">esfsd</h2>
-							</div>
-						  </div>
-				<div id="messagesList" class="flex-grow-1" >
-					
+				<div class="card" style="width: 25rem; left: 0; margin-left:15%">
+					<div class="card-body" style="padding: 10px">
+						<div style="color: black">
+							<h3 id="online"><span id="user"></span> Users Online</h3>
+						</div>
+						<h2 id="h2" style="color: black">Typing ni sya</h2>
+						<h2 id="userOnline" style="color: black">Users</h2>
+
 					</div>
-				</div><center>
-				<form id="messageForm" class="flex" style="margin-left:29%; margin-right:27%">
-					<input type="text" name="message " id="messageInput" class="flex-grow-1">
-					<button id="sendBtn"><img src="https://cdn.pixabay.com/photo/2018/02/04/01/54/paper-planes-3128885_960_720.png" style="height: 50px;"></button>
-				</form></center>
-			</section>
+				</div>
+				<div id="messagesList" class="flex-grow-1">
 
-
-
+				</div>
 		</div>
+		<center>
+			<form id="messageForm" class="flex" style="margin-left:29%; margin-right:27%">
+				<input type="text" name="message " id="messageInput" class="flex-grow-1">
+				<button id="sendBtn"><img src="https://cdn.pixabay.com/photo/2018/02/04/01/54/paper-planes-3128885_960_720.png"
+					 style="height: 50px;"></button>
+			</form>
+		</center>
+		</section>
+
+
+
+	</div>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>

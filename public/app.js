@@ -75,7 +75,7 @@ $(document).ready(function () {
 
 	sendBtn.on("click", function (e) {
 		e.preventDefault();
-		if (!$('#messageInput').val()) {
+		if (!messageInput.val()) {
 			console.log('Invalid input');
 		}
 
@@ -103,12 +103,18 @@ $(document).ready(function () {
 		messageInput.val("");
 	});
 
+	// $('#messageInput').bind("keypress", function () {
+	// 	// e.preventDefault();
+	// 	socket.emit('typing');
+	// })
 
 
 	loginBtn.on("click", function (e) {
 		e.preventDefault();
 
-		// $('#user').prepend($('#users').html());
+		socket.on('userExists', function(data) {
+			$('#userOnline').html(data);
+		 });
 
 		if (!usernameInput.val()) {
 			console.log('Must supply a username');
@@ -130,11 +136,16 @@ $(document).ready(function () {
 
 		//ADDED NICKNAME
 		socket.emit('send-nickname', username);
-	})
 
+		socket.on('userExists', function(data) {
+			$('#userOnline').html(data);
+		});
+	})
+	
 	sendMessage = function (message) {
 		socket.emit('message', message);
 	};
+
 	var userCount;
 	socket.on('userCount', function (data) {
 		console.log(data.userCount);
@@ -146,7 +157,6 @@ $(document).ready(function () {
 	socket.on('usersOnline', function (data) {
 		console.log(data.usersOnline);
 	})
-
 
 	$('#messageInput').bind("keypress", function () {
 		// e.preventDefault();
