@@ -1,3 +1,7 @@
+//WHATS LACKING IS THAT YOU SHOULD FIX THE BUG FOR USERNAME EXISTS AND
+//BREAK THE ONLINE USERS
+//CREATE A USER HAS LEFT THE CHAT
+//
 $(document).ready(function () {
 
 	const messageTypes = { LEFT: 'left', RIGHT: 'right', LOGIN: 'login' };
@@ -40,11 +44,16 @@ $(document).ready(function () {
 	createMessageHTML = function (message) {
 		if (message.type === messageTypes.LOGIN) {
 			return `
-			<p class="secondary-text text-center mb-2">${
+			<br><p class="secondary-text text-center mb-2" id="status">${
 				message.author
 				} joined the chat...</p>
 		`;
 		}
+		else {
+
+		}
+
+
 
 		//I STOPPED RIGHT HERE
 		return `
@@ -103,18 +112,15 @@ $(document).ready(function () {
 		messageInput.val("");
 	});
 
-	// $('#messageInput').bind("keypress", function () {
-	// 	// e.preventDefault();
-	// 	socket.emit('typing');
-	// })
-
 
 	loginBtn.on("click", function (e) {
 		e.preventDefault();
 
-		socket.on('userExists', function(data) {
-			$('#userOnline').html(data);
-		 });
+		//display that the user already exists
+		socket.on('userExists', function (data) {
+			alert(data);
+			return window.location.replace("index.html");
+		});
 
 		if (!usernameInput.val()) {
 			console.log('Must supply a username');
@@ -127,48 +133,49 @@ $(document).ready(function () {
 		//set the username and create logged in message
 		username = usernameInput.val();
 		sendMessage({ author: username, type: messageTypes.LOGIN });
-
-
+		//ADDED NICKNAME
+		socket.emit('send-nickname', username);
 
 		loginWindow.addClass('hidden');
 		chatWindow.removeClass('hidden');
 		messageForm.removeClass('hidden');
-
-		//ADDED NICKNAME
-		socket.emit('send-nickname', username);
-
-		socket.on('userExists', function(data) {
-			$('#userOnline').html(data);
-		});
 	})
-	
+
+
+
+
+
+	socket.on('allUsers', function (listOfUsers) {
+		$('#user').text(listOfUsers.length);
+	});
+	//THIS IS NOT DONE //////////////////////////////////////////////////
+	// socket.on('allUsersDis', function (listOfUsers) {
+	// 	$('#status').after(listOfUsers[0]);
+	// 	// $("p[id=status]:last").attr("id").append(listOfUsers[0]);
+	// });
+
+	socket.on('allUsers', function (users) {
+		$('#messages').html(users.join(", "));
+		// $('#messages').html();
+
+	});
+
 	sendMessage = function (message) {
 		socket.emit('message', message);
 	};
 
-	var userCount;
-	socket.on('userCount', function (data) {
-		console.log(data.userCount);
-		userCount = data.userCount;
-		$('#user').text(userCount);
-	});
-
-	var index = 0;
-	socket.on('usersOnline', function (data) {
-		console.log(data.usersOnline);
-	})
-
 	$('#messageInput').bind("keypress", function () {
-		// e.preventDefault();
 		socket.emit('typing');
 	})
 
-
 	socket.on('typing', function (message, err) {
 		console.log(err);
-		$('#h2').html(message.username+ " is typing a message...");
+		messagesList.append('<h6 id="isTyping" style="color: black; font-size: 20px;"></h6>');
+		$('#isTyping').html(message.username + " is typing a message...");
 		setTimeout(function () {
-		$("#h2").html('');
+			$("#isTyping").html('');
 		}, 3000);
-		})
+	})
+
+
 })
