@@ -116,12 +116,6 @@ $(document).ready(function () {
 	loginBtn.on("click", function (e) {
 		e.preventDefault();
 
-		//display that the user already exists
-		socket.on('userExists', function (data) {
-			alert(data);
-			return window.location.replace("index.html");
-		});
-
 		if (!usernameInput.val()) {
 			console.log('Must supply a username');
 			return Swal.fire({
@@ -143,21 +137,17 @@ $(document).ready(function () {
 
 
 
-
+	$('#logout').click(function(){
+		window.location.replace("index.html");
+	})
 
 	socket.on('allUsers', function (listOfUsers) {
 		$('#user').text(listOfUsers.length);
 	});
-	//THIS IS NOT DONE //////////////////////////////////////////////////
-	// socket.on('allUsersDis', function (listOfUsers) {
-	// 	$('#status').after(listOfUsers[0]);
-	// 	// $("p[id=status]:last").attr("id").append(listOfUsers[0]);
-	// });
 
 	socket.on('allUsers', function (users) {
-		$('#messages').html(users.join(", "));
+		$('#messages').html(users.join(", ").replace(/,/g,"<br>"));
 		// $('#messages').html();
-
 	});
 
 	sendMessage = function (message) {

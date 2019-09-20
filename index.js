@@ -19,12 +19,12 @@ io.on('connection', function (socket) {
 	//ADDED NICKNAME
 	socket.on('send-nickname', function (data) {
 		socket.nickname = data;
-		if (users.indexOf(data) > -1) {
-			socket.emit('userExists', data + ' username is taken! Try some other username.');
-		} else {
+		// if (users.indexOf(data) > -1) {
+		// 	socket.emit('userExists', data + ' username is taken! Try some other username.');
+		// } else {
 			users.push(socket.nickname);
 			io.sockets.emit('allUsers', users);
-		}
+		// }
 	});
 	//DISCONNECTION
 	socket.on('disconnect', function () {

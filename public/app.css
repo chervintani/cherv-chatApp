@@ -144,7 +144,16 @@ button {
 
 /* FOR THE CARDS */
 
+#card {
 
+	height: 70%;
+	flex-direction: column;
+	text-overflow: ellipsis;
+	white-space: initial;
+	word-wrap: break-word;
+	overflow: hidden;
+	overflow-y: scroll;
+}
 .card {
     position:absolute;
     top:50%;
@@ -156,6 +165,7 @@ button {
     box-shadow:0 20px 50px rgba(0,0,0,.1);
     border-radius:10px;
 	transition:0.5s;
+
 }
 .card:hover {
 	box-shadow:0 50px 70px rgba(0,0,0,.2);
@@ -239,6 +249,12 @@ button {
 	color: white;
 	overflow-y: scroll;
 	border-radius: 20px;
+	flex-direction: column;
+	text-overflow: ellipsis;
+	white-space: initial;
+	word-wrap: break-word;
+	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .footer {
