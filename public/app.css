@@ -118,6 +118,35 @@ header .container {
 }
 
 /* Login */
+#logout {
+
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+  
+}
+
+#logout:hover {
+	opacity: 1;
+	background-color: #ab1bbe;
+}
+
+#loginBtn {
+	border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+
+#loginBtn:hover {
+	opacity: 1;
+	background-color: #ab1bbe;
+}
 
 #loginForm {
 	margin-top: 25px;
@@ -131,6 +160,7 @@ input {
 	background-color: var(--light-blue);
 	border: none;
 	color: var(--secondary-text);
+	outline:none;
 }
 
 button {
@@ -153,6 +183,12 @@ button {
 	word-wrap: break-word;
 	overflow: hidden;
 	overflow-y: scroll;
+	transition:0.5s;
+	color: black;
+}
+
+#card:hover {
+	box-shadow:0 50px 70px rgba(0,0,0,.2);
 }
 .card {
     position:absolute;

@@ -43,7 +43,7 @@
 									<label for="usr">Enter username:</label>
 									<input type="text" class="form-control" id="usernameInput" placeholder="Username">
 									<div class="input-group-append">
-										<br><br><button class="btn btn-outline-secondary" id="loginBtn" type="button" >Chat now</button>
+										<br><br><button class="btn btn-outline-secondary" id="loginBtn" type="submit" >Chat now</button>
 									</div>
 								</div>
 							</form>
@@ -55,12 +55,13 @@
 			</section>
 
 			<section id="chat" class="flex-grow-1 flex-column hidden">
-				<div>
-					<button class="btn btn-outline-secondary" id="logout" type="button" >Logout</button>
-				</div>
+				
 				<div class="card" id="card" style="width: 25rem; left: 0; margin-left:15%">
 					<div class="card-body" style="padding: 10px">
-						<div style="color: black">
+						<div>
+							<button class="btn btn-outline-secondary" id="logout" type="button" >Logout</button>
+						</div>
+						<div>
 							<h3 id="online"><span id="user"></span> User(s) Online</h3>
 						</div>
 						<!-- <h2 id="h2" style="color: black">Typing ni sya</h2> -->

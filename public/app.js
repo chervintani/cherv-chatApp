@@ -37,8 +37,7 @@ $(document).ready(function () {
 		messages.push(message);
 		displayMessages();
 
-		//scroll to the bottom
-		chatWindow.scrollTop() = chatWindow.height();
+		chatWindow.scrollTop(chatWindow[0].scrollHeight);
 	});
 
 	createMessageHTML = function (message) {
