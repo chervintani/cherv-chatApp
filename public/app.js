@@ -85,6 +85,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		if (!messageInput.val()) {
 			console.log('Invalid input');
+			return;
 		}
 
 		function formatAMPM(date) {
@@ -145,7 +146,7 @@ $(document).ready(function () {
 	});
 
 	socket.on('allUsers', function (users) {
-		$('#messages').html(users.join(", ").replace(/,/g,"<br>"));
+		$('#messages').html(users.join(", ").replace(/,/g,"<br>")).css("margin-left","5%");
 	});
 
 	sendMessage = function (message) {

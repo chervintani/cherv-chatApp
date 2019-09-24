@@ -152,7 +152,22 @@ header .container {
 	margin-top: 25px;
 }
 
+.swal2-popup {
+	font-size: 1.6rem !important;
+  }
+
 /* Form Elements */
+
+hr.style-four {
+    height: 12px;
+    border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+	color: black;
+}
+
+hr {
+	border-top: 1px solid black;
+   }
 
 input {
 	height: 40px;

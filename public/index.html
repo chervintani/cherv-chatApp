@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Quick Chat</title>
+	<title>ChatApp</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -19,18 +19,9 @@
 <body>
 
 	<div id="appContainer" class="flex-column">
-
-		<!-- <header>
-			<div class="container flex-column flex-center">
-				<h1>Chat App</h1>
-				<p class="light-text">Chat application made of socket.io by Chervin</p>
-			</div>
-		</header> -->
-
 		<div id="mainContent" class="container flex-grow-1 flex-column ">
 
 			<section id="login">
-
 				<div class="card">
 					<div class="box">
 						<div class="img">
@@ -57,12 +48,12 @@
 				<div class="card" id="card">
 					<div class="card-body">
 						<div>
-							<button class="btn btn-outline-secondary" id="logout" type="button" >Logout</button>
+							<button class="btn btn-danger" id="logout" type="button" >Logout</button>
 						</div>
 						<div>
 							<h3 id="online"><span id="user"></span> User(s) Online</h3>
+							<hr>
 						</div>
-						<!-- <h2 id="h2" style="color: black">Typing ni sya</h2> -->
 						<h2 id="userOnline"></h2>
 						<h2 id="messages"></h2>
 
