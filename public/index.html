@@ -41,7 +41,7 @@
 							<form id="loginForm" class="flex">
 								<div class="input-group mb-3">
 									<label for="usr">Enter username:</label>
-									<input type="text" class="form-control" id="usernameInput" placeholder="Username">
+									<input type="text" class="form-control" id="usernameInput" placeholder="Username" maxlength="100">
 									<div class="input-group-append">
 										<br><br><button class="btn btn-outline-secondary" id="loginBtn" type="submit" >Chat now</button>
 									</div>
@@ -51,13 +51,11 @@
 
 					</div>
 				</div>
-
 			</section>
-
+			
 			<section id="chat" class="flex-grow-1 flex-column hidden">
-				
-				<div class="card" id="card" style="width: 25rem; left: 0; margin-left:15%">
-					<div class="card-body" style="padding: 10px">
+				<div class="card" id="card">
+					<div class="card-body">
 						<div>
 							<button class="btn btn-outline-secondary" id="logout" type="button" >Logout</button>
 						</div>
@@ -65,8 +63,8 @@
 							<h3 id="online"><span id="user"></span> User(s) Online</h3>
 						</div>
 						<!-- <h2 id="h2" style="color: black">Typing ni sya</h2> -->
-						<h2 id="userOnline" style="color: black"></h2>
-						<h2 id="messages" style="color: black"></h2>
+						<h2 id="userOnline"></h2>
+						<h2 id="messages"></h2>
 
 					</div>
 				</div>
@@ -75,10 +73,9 @@
 				</div>
 		</div>
 		<center>
-			<form id="messageForm" class="flex" style="margin-left:29%; margin-right:27%">
+			<form id="messageForm" class="flex">
 				<input type="text" name="message " id="messageInput" class="flex-grow-1">
-				<button id="sendBtn"><img src="https://cdn.pixabay.com/photo/2018/02/04/01/54/paper-planes-3128885_960_720.png"
-					 style="height: 50px;"></button>
+				<button id="sendBtn"><img id="send" src="https://cdn.pixabay.com/photo/2018/02/04/01/54/paper-planes-3128885_960_720.png"></button>
 			</form>
 		</center>
 		</section>

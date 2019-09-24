@@ -146,7 +146,6 @@ $(document).ready(function () {
 
 	socket.on('allUsers', function (users) {
 		$('#messages').html(users.join(", ").replace(/,/g,"<br>"));
-		// $('#messages').html();
 	});
 
 	sendMessage = function (message) {
